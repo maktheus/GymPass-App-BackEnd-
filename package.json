@@ -1,0 +1,26 @@
+{
+  "name": "rockeat_seat_project_01",
+  "version": "1.0.0",
+  "description": "GymPass style app.",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/server.ts --sourcemap --noClean --noEmit",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "18.15.0",
+    "tsup": "6.6.3",
+    "tsx": "3.12.4",
+    "typescript": "4.9.5"
+  },
+  "dependencies": {
+    "dotenv": "16.0.3",
+    "fastify": "4.14.1",
+    "zod": "3.21.4"
+  }
+}
