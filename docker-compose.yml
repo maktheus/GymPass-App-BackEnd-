@@ -1,0 +1,31 @@
+#docker run --name api-solid-pg -e  POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=api-solid-db -p 5432:5432  bitnami/postgresql:latest
+
+version: '3.7'
+
+services:
+  api-solid:
+    image: api-solid
+    container_name: api-solid
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=api-solid-pg
+      - DB_PORT=5432
+      - DB_USER=docker
+      - DB_PASSWORD=docker
+      - DB_NAME=api-solid-db
+    depends_on:
+      - api-solid-pg
+  api-solid-pg:
+    image: bitnami/postgresql:latest
+    container_name: api-solid-pg
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=api-solid-db
